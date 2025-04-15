@@ -14,8 +14,10 @@ function secondsToMinutes(seconds) {
 const getsongs = async (folder) => {
 
     currFolder = folder
-    const a = await fetch(`http://127.0.0.1:3000/spotify/${folder}`);
+    // const a = await fetch(`http://127.0.0.1:3000/songs/${folder}`);
+    const a = await fetch (`http://127.0.0.1:3000/songs/${folder}`)
     const response = await a.text();
+    
 
 
     const div = document.createElement("div");
@@ -72,7 +74,7 @@ const getsongs = async (folder) => {
 // ------- fumction to play songs -------
 function playMusic(track) {
 
-    currentSong.src = `${currFolder}/${track}`
+    currentSong.src = `/songs/${currFolder}/${track}`
 
         currentSong.play()
         play.src = "img/pause.svg"
@@ -84,8 +86,9 @@ function playMusic(track) {
 // function to show album and its sonngs
 const album = async () => {
 
-    let a = await fetch(`http://127.0.0.1:3000/spotify/songs`);
+    let a = await fetch(`http://127.0.0.1:3000/songs/`);
     let response = await a.text();
+   
     let div = document.createElement("div");
     div.innerHTML = response;
     let card = document.querySelector(".content")
@@ -103,8 +106,9 @@ const album = async () => {
         if (folder.endsWith(".DS_Store") || folder.includes(".")) continue;
 
 
-        let a = await fetch(`http://127.0.0.1:3000/spotify/songs/${folder}/info.json`);
+        let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`);
         let response = await a.json();
+        
         
         card.innerHTML = card.innerHTML + `<div data-folder="${folder}" class="card">
                     <div class="play">
@@ -115,7 +119,7 @@ const album = async () => {
                     </svg>
 
                     </div>
-                    <img src="/spotify/songs/${folder}/cover.jpeg" alt="">
+                    <img src="/songs/${folder}/cover.jpeg" alt="">
                     <h2>${response.title}</h2>
                     <p>${response.description}</p>
                 </div>`
@@ -126,7 +130,7 @@ Array.from(document.getElementsByClassName("card")).forEach(e => {
    
     e.addEventListener("click", async item => {
    
-         await getsongs(`songs/${item.currentTarget.dataset.folder}`)
+         await getsongs(`${item.currentTarget.dataset.folder}`)
     })
 })
 }
@@ -134,7 +138,7 @@ Array.from(document.getElementsByClassName("card")).forEach(e => {
 
 // --------- main function -------
 async function main() {
-    await getsongs("songs/bollywood")
+    await getsongs("bollywood")
 
 
    await album()
