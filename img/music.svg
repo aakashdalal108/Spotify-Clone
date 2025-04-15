@@ -1,0 +1,41 @@
+<!-- <svg width="60" height="40" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-label="Now Playing">
+  <rect x="5" width="10" height="30" fill="#1db954">
+    <animate attributeName="height" values="10;30;10" dur="0.8s" repeatCount="indefinite" begin="0s"/>
+    <animate attributeName="y" values="20;0;20" dur="0.8s" repeatCount="indefinite" begin="0s"/>
+  </rect>
+  <rect x="25" width="10" height="30" fill="#1db954">
+    <animate attributeName="height" values="30;10;30" dur="0.8s" repeatCount="indefinite" begin="0.2s"/>
+    <animate attributeName="y" values="0;20;0" dur="0.8s" repeatCount="indefinite" begin="0.2s"/>
+  </rect>
+  <rect x="45" width="10" height="30" fill="#1db954">
+    <animate attributeName="height" values="15;30;15" dur="0.8s" repeatCount="indefinite" begin="0.4s"/>
+    <animate attributeName="y" values="15;0;15" dur="0.8s" repeatCount="indefinite" begin="0.4s"/>
+  </rect>
+</svg> -->
+
+
+<svg width="60" height="40" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-label="Now Playing">
+  <defs>
+    <linearGradient id="animatedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop id="stop1" offset="0%" stop-color="#1db954">
+        <animate attributeName="stop-color" values="#1db954; #ff416c; #1db954" dur="3s" repeatCount="indefinite" />
+      </stop>
+      <stop id="stop2" offset="100%" stop-color="#1ed760">
+        <animate attributeName="stop-color" values="#1ed760; #ff4b2b; #1ed760" dur="3s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+  </defs>
+
+  <rect x="5" width="10" height="30" fill="url(#animatedGradient)">
+    <animate attributeName="height" values="10;30;10" dur="0.8s" repeatCount="indefinite" begin="0s"/>
+    <animate attributeName="y" values="20;0;20" dur="0.8s" repeatCount="indefinite" begin="0s"/>
+  </rect>
+  <rect x="25" width="10" height="30" fill="url(#animatedGradient)">
+    <animate attributeName="height" values="30;10;30" dur="0.8s" repeatCount="indefinite" begin="0.2s"/>
+    <animate attributeName="y" values="0;20;0" dur="0.8s" repeatCount="indefinite" begin="0.2s"/>
+  </rect>
+  <rect x="45" width="10" height="30" fill="url(#animatedGradient)">
+    <animate attributeName="height" values="15;30;15" dur="0.8s" repeatCount="indefinite" begin="0.4s"/>
+    <animate attributeName="y" values="15;0;15" dur="0.8s" repeatCount="indefinite" begin="0.4s"/>
+  </rect>
+</svg>
