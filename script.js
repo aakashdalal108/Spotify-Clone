@@ -14,16 +14,13 @@ function secondsToMinutes(seconds) {
 const getsongs = async (folder) => {
 
     currFolder = folder
-    // const a = await fetch(`http://127.0.0.1:3000/songs/${folder}`);
-    const a = await fetch (`http://127.0.0.1:3000/songs/${folder}`)
-    const response = await a.text();
+    let a = await fetch (`/${folder}`)
+    let response = await a.text();
     
-
-
-    const div = document.createElement("div");
+    let div = document.createElement("div");
     div.innerHTML = response;
 
-    const as = div.getElementsByTagName("a");
+    let as = div.getElementsByTagName("a");
 
     songs = [];
     for (let index = 0; index < as.length; index++) {
@@ -86,7 +83,7 @@ function playMusic(track) {
 // function to show album and its sonngs
 const album = async () => {
 
-    let a = await fetch(`http://127.0.0.1:3000/songs/`);
+    let a = await fetch(`/songs/`);
     let response = await a.text();
    
     let div = document.createElement("div");
@@ -106,7 +103,7 @@ const album = async () => {
         if (folder.endsWith(".DS_Store") || folder.includes(".")) continue;
 
 
-        let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`);
+        let a = await fetch(`/songs/${folder}/info.json`);
         let response = await a.json();
         
         
@@ -138,7 +135,7 @@ Array.from(document.getElementsByClassName("card")).forEach(e => {
 
 // --------- main function -------
 async function main() {
-    await getsongs("bollywood")
+    await getsongs("songs/bollywood")
 
 
    await album()
