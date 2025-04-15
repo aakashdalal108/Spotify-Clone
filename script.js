@@ -14,7 +14,7 @@ function secondsToMinutes(seconds) {
 const getsongs = async (folder) => {
 
     currFolder = folder
-    let a = await fetch (`songs/${folder}`)
+    let a = await fetch (`/${folder}`)
     let response = await a.text();
     
     let div = document.createElement("div");
@@ -83,7 +83,7 @@ function playMusic(track) {
 // function to show album and its sonngs
 const album = async () => {
 
-    let a = await fetch(`songs/`);
+    let a = await fetch(`/songs/`);
     let response = await a.text();
    
     let div = document.createElement("div");
@@ -97,7 +97,7 @@ const album = async () => {
         const element = array[index];
 
     
-    if (element.href.includes("/songs")) {
+    if (element.href.includes("/songs")&& !e.href.includes(".htaccess")) {
         let folder = element.href.split("/").slice(-2).join("/")
 
         if (folder.endsWith(".DS_Store") || folder.includes(".")) continue;
